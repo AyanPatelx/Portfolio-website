@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Minimal, premium personal portfolio — clean typography, whitespace, and smooth micro‑interactions. One-page layout with Hero, About, Projects, Skills, and Contact." />
+  <link rel="canonical" href="https://example.com/" />
+  <title>Ayan Patel — Portfolio</title>
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Ayan Patel — Portfolio" />
+  <meta property="og:description" content="Minimal, premium personal portfolio — Apple-level polish with focus on typography and whitespace." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="https://example.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Preload optional: local variable font if you add one later -->
+  <!-- <link rel="preload" href="/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin> -->
+
+  <style>
+    /* ------------------
+       DESIGN TOKENS
+    ------------------ */
+    :root{
+      --bg: #ffffff;
+      --text: #111111; /* premium deep black */
+      --muted: #6b7280; /* soft gray */
+      --line: #e5e7eb; /* subtle lines */
+      --surface: #f7f7f8; /* ultra light gray for blocks */
+      --accent: #111111; /* keep accent = text for ultra-minimal */
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --container: 1120px;
+    }
+
+    /* Global reset with care for readability */
+    *,*::before,*::after{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img{ max-width: 100%; display: block; }
+    a{ color: inherit; text-decoration: none; }
+    p{ color: var(--muted); font-size: clamp(0.95rem, 0.6vw + 0.8rem, 1.05rem); }
+    h1,h2,h3{ line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 0.5rem; }
+    h1{ font-size: clamp(2.2rem, 4.5vw, 4rem); }
+    h2{ font-size: clamp(1.4rem, 1.8vw, 2rem); }
+    h3{ font-size: clamp(1.05rem, 1.2vw, 1.25rem); }
+
+    .container{ width: min(100%, var(--container)); margin-inline: auto; padding-inline: clamp(1rem, 3vw, 2rem); }
+    .section{ padding: clamp(3.5rem, 7vw, 6rem) 0; border-top: 1px solid var(--line); }
+    .section:first-of-type{ border-top: none; }
+
+    /* Header */
+    .header{ position: sticky; top: 0; backdrop-filter: saturate(180%) blur(12px); background: color-mix(in srgb, var(--bg), transparent 12%); border-bottom: 1px solid color-mix(in srgb, var(--line), transparent 40%); z-index: 50; }
+    .nav{ display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
+    .brand{ display:flex; align-items:center; gap:.75rem; font-weight:600; letter-spacing:-0.01em; }
+    .brand-mark{ width: 28px; height: 28px; border-radius: 8px; background: var(--text); }
+    .nav-links{ display:flex; gap: clamp(.25rem, 2vw, 1rem); }
+    .nav a{ padding: .5rem .75rem; border-radius: 999px; color: #444; }
+    .nav a:hover, .nav a[aria-current="page"]{ background: var(--surface); color: var(--text); }
+
+    /* Hero */
+    .hero{ display:grid; grid-template-columns: 1fr; align-items:center; min-height: 72vh; gap: 2rem; }
+    .eyebrow{ display:inline-block; padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.85rem; color:#555; }
+    .hero h1{ margin-top: .4rem; }
+    .tagline{ font-size: clamp(1.05rem, 1.5vw, 1.25rem); max-width: 52ch; }
+    .cta{ display:flex; gap:.75rem; margin-top: 1.25rem; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:.8rem 1.1rem; border-radius:999px; border:1px solid var(--line); background: var(--text); color: #fff; transition: transform .2s ease, box-shadow .2s ease; }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
+    .btn.ghost{ background: transparent; color: var(--text); }
+
+    /* Grids */
+    .grid{ display:grid; gap: clamp(1rem, 2vw, 1.5rem); }
+    .grid.cols-3{ grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-2{ grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 900px){ .grid.cols-3{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px){ .grid.cols-3, .grid.cols-2{ grid-template-columns: 1fr; } }
+
+    /* Cards */
+    .card{ position:relative; border:1px solid var(--line); border-radius: var(--radius); background: #fff; padding: 1.25rem; transition: transform .3s ease, box-shadow .3s ease; }
+    .card:hover{ transform: translateY(-4px); box-shadow: var(--shadow); }
+    .thumb{ aspect-ratio: 16/10; border-radius: 12px; background:
+      radial-gradient(1200px 50% at 0% 0%, #fafafa 0%, #ffffff 40%, #f4f4f5 100%);
+      border:1px solid var(--line);
+      margin-bottom: .9rem;
+    }
+    .meta{ display:flex; align-items:center; justify-content:space-between; gap:.5rem; color:#666; font-size:.9rem; }
+
+    /* List Chips */
+    .chips{ display:flex; flex-wrap: wrap; gap:.5rem; margin-top:.75rem; }
+    .chip{ padding:.35rem .6rem; background: var(--surface); border:1px solid var(--line); border-radius: 999px; font-size:.85rem; color:#555; }
+
+    /* Footer */
+    footer{ border-top: 1px solid var(--line); }
+    .footnote{ color:#777; font-size:.9rem; }
+
+    /* Animations (reduced-motion aware) */
+    .reveal{ opacity: 0; transform: translateY(12px); }
+    .reveal.is-visible{ opacity: 1; transform: translateY(0); transition: opacity .7s ease, transform .7s ease; }
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior: auto; }
+      .reveal, .reveal.is-visible{ opacity:1; transform:none; transition:none; }
+      .btn{ transition: none; }
+    }
+
+    /* Utilities */
+    .split{ display:grid; grid-template-columns: 1.25fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items:center; }
+    @media (max-width: 900px){ .split{ grid-template-columns: 1fr; } }
+    .muted{ color: var(--muted); }
+    .divider{ height:1px; background: var(--line); margin: 1.25rem 0; }
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    .skip-link{ position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus{ position: static; width: auto; height: auto; padding:.5rem .75rem; background:#000; color:#fff; border-radius:999px; }
+  </style>
+
+  <!-- Structured Data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ayan Patel",
+    "url": "https://example.com/",
+    "jobTitle": "Product-Focused Engineer",
+    "sameAs": [
+      "https://github.com/your-handle",
+      "https://www.linkedin.com/in/your-handle"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" role="banner">
+    <div class="container nav" aria-label="Primary">
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Ayan Patel</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Hero -->
+    <section id="home" class="section">
+      <div class="container hero reveal">
+        <div>
+          <span class="eyebrow">Available for select collaborations</span>
+          <h1>Building thoughtful digital products with ruthless simplicity.</h1>
+          <p class="tagline">I’m Ayan, a product‑minded engineer focused on clean experiences, performance, and details that feel inevitable — inspired by Apple‑grade craft.</p>
+          <div class="cta">
+            <a class="btn" href="#projects">See work</a>
+            <a class="btn ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container split reveal">
+        <div>
+          <h2 id="about-title">About</h2>
+          <p>Over the past <strong>4+ years</strong>, I’ve shipped web and product experiences used by thousands. I value <em>clarity</em> over complexity, and I obsess over performance, accessibility, and typography. My approach is to remove everything that isn’t essential — then refine what remains.</p>
+          <div class="chips" aria-label="Focus areas">
+            <span class="chip">Design Systems</span>
+            <span class="chip">Frontend Architecture</span>
+            <span class="chip">Performance</span>
+            <span class="chip">A11y</span>
+          </div>
+        </div>
+        <div>
+          <div class="card" role="img" aria-label="Abstract placeholder image representing minimal design">
+            <div class="thumb">
+                <img src="asstes\images\DSC08297.JPG" alt="Ayan Patel" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+            </div>
+            <div class="meta"><span>Based in India</span><span class="muted">UTC+5:30</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="container reveal">
+        <h2 id="projects-title">Selected Projects</h2>
+        <p class="muted">A small selection of work. Clean interfaces, real performance, no fluff.</p>
+        <div class="grid cols-3" role="list">
+          <!-- Project 1 -->
+          <article class="card" role="listitem">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>Commerce Checkout Revamp</h3>
+            <p>Rebuilt a checkout flow to reduce friction. Result: <strong>-28%</strong> drop‑offs, <strong>+14% </strong>conversion, sub‑100ms interactivity.</p>
+            <div class="chips">
+              <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Edge&nbsp;SSR</span>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card" role="listitem">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>Design System — Mono</h3>
+            <p>Created a minimal component library with strict tokens and motion. Scaled across 6 teams in 3 months.</p>
+            <div class="chips">
+              <span class="chip">Design Tokens</span><span class="chip">ARIA</span><span class="chip">Theming</span>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card" role="listitem">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>Analytics Dashboard</h3>
+            <p>Zero‑noise, high‑signal metrics view with real‑time updates. <strong>+2x</strong> daily active use.</p>
+            <div class="chips">
+              <span class="chip">WebSockets</span><span class="chip">Svelte/React</span><span class="chip">Perf</span>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="card" role="listitem">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>Marketing Site Refresh</h3>
+            <p>Apple‑inspired typographic redesign. Faster by <strong>35%</strong>, lighthouse 98/100.</p>
+            <div class="chips">
+              <span class="chip">Next.js</span><span class="chip">Image&nbsp;Optimization</span><span class="chip">SEO</span>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="card" role="listitem">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>Docs Platform</h3>
+            <p>Built a docs experience with progressive disclosure and searchable snippets. Support tickets down <strong>22%</strong>.</p>
+            <div class="chips">
+              <span class="chip">MDX</span><span class="chip">Algolia</span><span class="chip">DX</span>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="card" role="listitem">
+            <div class="thumb" aria-hidden="true"></div>
+            <h3>Mobile Web App</h3>
+            <p>Gesture‑first PWA with offline mode and instant launch. User CSAT up <strong>18%</strong>.</p>
+            <div class="chips">
+              <span class="chip">PWA</span><span class="chip">IndexedDB</span><span class="chip">Motion</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills / Services -->
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <div class="container reveal">
+        <h2 id="skills-title">Skills & Services</h2>
+        <div class="grid cols-3" style="margin-top: 1rem;">
+          <div class="card">
+            <h3>Product Engineering</h3>
+            <p>From concept to ship. I translate goals into clean interfaces that move metrics without bloat.</p>
+            <div class="chips"><span class="chip">React / TS</span><span class="chip">Node</span><span class="chip">API</span></div>
+          </div>
+          <div class="card">
+            <h3>Design Systems</h3>
+            <p>Token‑driven systems with strict typography, spacing, and motion. Consistency at speed.</p>
+            <div class="chips"><span class="chip">Figma</span><span class="chip">Tokens</span><span class="chip">A11y</span></div>
+          </div>
+          <div class="card">
+            <h3>Performance & SEO</h3>
+            <p>Ship fast by default: Core Web Vitals, SSR/ISR, clean semantics, and metadata that ranks.</p>
+            <div class="chips"><span class="chip">Lighthouse</span><span class="chip">CWV</span><span class="chip">Schema</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container reveal">
+        <h2 id="contact-title">Contact</h2>
+        <p class="muted">Have a project in mind or just want to say hello?</p>
+        <div class="grid cols-2" style="margin-top:1rem;">
+          <div class="card">
+            <h3>Email</h3>
+            <p><a href="mailto:vartaman2004@gmail.com" aria-label="Send email to hello at your domain">vartaman2004@gmail.com</a></p>
+            <div class="divider"></div>
+            <h3>Social</h3>
+            <p><a href="https://www.linkedin.com/in/ayan-patel-897bb1271/">LinkedIn</a> · <a href="https://github.com/your-handle">GitHub</a></p>
+          </div>
+          <form class="card" method="post" action="mailto:hello@yourdomain.com" enctype="text/plain">
+            <h3>Quick Message</h3>
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" required placeholder="Name" style="width:100%;padding:.9rem 1rem;margin:.4rem 0; border:1px solid var(--line); border-radius:12px;" />
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="Email" style="width:100%;padding:.9rem 1rem;margin:.4rem 0; border:1px solid var(--line); border-radius:12px;" />
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Message" style="width:100%;padding:.9rem 1rem;margin:.4rem 0; border:1px solid var(--line); border-radius:12px; resize:vertical;"></textarea>
+            <button class="btn" type="submit" style="width:100%; margin-top:.4rem;">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" role="contentinfo">
+    <div class="container">
+      <div class="meta" style="justify-content: space-between;">
+        <span class="footnote">© <span id="year"></span> Ayan Patel</span>
+        <a class="muted" href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Active link highlight on scroll & simple reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle('is-visible', entry.isIntersecting));
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Highlight current section in nav
+    const sections = Array.from(document.querySelectorAll('main section'));
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+
+    const setActive = () => {
+      let fromTop = window.scrollY + 120;
+      let current = sections.findLast(sec => sec.offsetTop <= fromTop) || sections[0];
+      navLinks.forEach(a => a.removeAttribute('aria-current'));
+      const active = document.querySelector(`.nav a[href="#${current.id}"]`);
+      if(active) active.setAttribute('aria-current', 'page');
+    };
+    document.addEventListener('scroll', setActive, { passive: true });
+    window.addEventListener('load', () => { setActive(); document.getElementById('year').textContent = new Date().getFullYear(); });
+  </script>
+</body>
+</html>
