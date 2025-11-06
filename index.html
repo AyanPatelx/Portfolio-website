@@ -5,139 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="Minimal, premium personal portfolio — clean typography, whitespace, and smooth micro‑interactions. One-page layout with Hero, About, Projects, Skills, and Contact." />
-  <link rel="canonical" href="https://example.com/" />
-  <title>Ayan Patel — Portfolio</title>
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Ayan Patel — Portfolio" />
-  <meta property="og:description" content="Minimal, premium personal portfolio — Apple-level polish with focus on typography and whitespace." />
+  <!-- 🔹 SEO BASICS -->
+  <title>Ayan Patel | Business Analyst & Strategy Intern</title>
+  <meta name="description" content="Ayan Patel — Business Analyst and Strategy Intern passionate about turning data, research, and insights into actionable product strategies. Skilled in Power BI, Excel, and Business Analysis." />
+  <meta name="keywords" content="Ayan Patel, Business Analyst, Strategy Intern, Product Management, Data Analytics, Power BI, Business Analysis, Product Strategy, Delhi, India" />
+  <link rel="canonical" href="https://ayanpatel.vercel.app/" />
+
+  <!-- 🔹 OPEN GRAPH (SOCIAL PREVIEW) -->
+  <meta property="og:title" content="Ayan Patel | Business Analyst & Strategy Intern" />
+  <meta property="og:description" content="Portfolio of Ayan Patel — Business Analyst focused on product strategy, analytics, and data-driven decision making." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://example.com/" />
-  <meta property="og:image" content="https://example.com/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:url" content="https://ayanpatel.vercel.app/" />
+  <meta property="og:image" content="https://ayanpatel.vercel.app/og-image.jpg" />
 
-  <!-- Preload optional: local variable font if you add one later -->
+  <!-- 🔹 TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ayan Patel | Business Analyst & Strategy Intern" />
+  <meta name="twitter:description" content="Business Analyst focused on strategy, analytics, and user insight." />
+  <meta name="twitter:image" content="https://ayanpatel.vercel.app/og-image.jpg" />
+
+  <!-- 🔹 FAVICON (Add your own icons later) -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- 🔹 STRUCTURED DATA FOR GOOGLE -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ayan Patel",
+    "url": "https://ayanpatel.vercel.app/",
+    "image": "https://ayanpatel.vercel.app/og-image.jpg",
+    "jobTitle": "Business Analyst | Strategy & Product Intern",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Ozibook"
+    },
+    "sameAs": [
+      "https://github.com/ayanpatel04",
+      "https://www.linkedin.com/in/ayan-patel-897bb1271/"
+    ],
+    "description": "Ayan Patel is a Business Analyst and Strategy Intern passionate about data-driven decision making, user research, and product strategy."
+  }
+  </script>
+
+  <!-- 🔹 PRELOAD (optional) -->
   <!-- <link rel="preload" href="/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin> -->
 
+  <!-- Keep your existing CSS below this line -->
   <style>
     /* ------------------
        DESIGN TOKENS
     ------------------ */
     :root{
       --bg: #ffffff;
-      --text: #111111; /* premium deep black */
-      --muted: #6b7280; /* soft gray */
-      --line: #e5e7eb; /* subtle lines */
-      --surface: #f7f7f8; /* ultra light gray for blocks */
-      --accent: #111111; /* keep accent = text for ultra-minimal */
+      --text: #111111;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --surface: #f7f7f8;
+      --accent: #111111;
       --radius: 16px;
       --shadow: 0 10px 30px rgba(0,0,0,0.06);
       --container: 1120px;
     }
-
-    /* Global reset with care for readability */
-    *,*::before,*::after{ box-sizing: border-box; }
-    html{ scroll-behavior: smooth; }
-    body{
-      margin: 0;
-      font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    img{ max-width: 100%; display: block; }
-    a{ color: inherit; text-decoration: none; }
-    p{ color: var(--muted); font-size: clamp(0.95rem, 0.6vw + 0.8rem, 1.05rem); }
-    h1,h2,h3{ line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 0.5rem; }
-    h1{ font-size: clamp(2.2rem, 4.5vw, 4rem); }
-    h2{ font-size: clamp(1.4rem, 1.8vw, 2rem); }
-    h3{ font-size: clamp(1.05rem, 1.2vw, 1.25rem); }
-
-    .container{ width: min(100%, var(--container)); margin-inline: auto; padding-inline: clamp(1rem, 3vw, 2rem); }
-    .section{ padding: clamp(3.5rem, 7vw, 6rem) 0; border-top: 1px solid var(--line); }
-    .section:first-of-type{ border-top: none; }
-
-    /* Header */
-    .header{ position: sticky; top: 0; backdrop-filter: saturate(180%) blur(12px); background: color-mix(in srgb, var(--bg), transparent 12%); border-bottom: 1px solid color-mix(in srgb, var(--line), transparent 40%); z-index: 50; }
-    .nav{ display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
-    .brand{ display:flex; align-items:center; gap:.75rem; font-weight:600; letter-spacing:-0.01em; }
-    .brand-mark{ width: 28px; height: 28px; border-radius: 8px; background: var(--text); }
-    .nav-links{ display:flex; gap: clamp(.25rem, 2vw, 1rem); }
-    .nav a{ padding: .5rem .75rem; border-radius: 999px; color: #444; }
-    .nav a:hover, .nav a[aria-current="page"]{ background: var(--surface); color: var(--text); }
-
-    /* Hero */
-    .hero{ display:grid; grid-template-columns: 1fr; align-items:center; min-height: 72vh; gap: 2rem; }
-    .eyebrow{ display:inline-block; padding:.35rem .7rem; border:1px solid var(--line); border-radius:999px; font-size:.85rem; color:#555; }
-    .hero h1{ margin-top: .4rem; }
-    .tagline{ font-size: clamp(1.05rem, 1.5vw, 1.25rem); max-width: 52ch; }
-    .cta{ display:flex; gap:.75rem; margin-top: 1.25rem; }
-    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:.8rem 1.1rem; border-radius:999px; border:1px solid var(--line); background: var(--text); color: #fff; transition: transform .2s ease, box-shadow .2s ease; }
-    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
-    .btn.ghost{ background: transparent; color: var(--text); }
-
-    /* Grids */
-    .grid{ display:grid; gap: clamp(1rem, 2vw, 1.5rem); }
-    .grid.cols-3{ grid-template-columns: repeat(3, 1fr); }
-    .grid.cols-2{ grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: 900px){ .grid.cols-3{ grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px){ .grid.cols-3, .grid.cols-2{ grid-template-columns: 1fr; } }
-
-    /* Cards */
-    .card{ position:relative; border:1px solid var(--line); border-radius: var(--radius); background: #fff; padding: 1.25rem; transition: transform .3s ease, box-shadow .3s ease; }
-    .card:hover{ transform: translateY(-4px); box-shadow: var(--shadow); }
-    .thumb{ aspect-ratio: 16/10; border-radius: 12px; background:
-      radial-gradient(1200px 50% at 0% 0%, #fafafa 0%, #ffffff 40%, #f4f4f5 100%);
-      border:1px solid var(--line);
-      margin-bottom: .9rem;
-    }
-    .meta{ display:flex; align-items:center; justify-content:space-between; gap:.5rem; color:#666; font-size:.9rem; }
-
-    /* List Chips */
-    .chips{ display:flex; flex-wrap: wrap; gap:.5rem; margin-top:.75rem; }
-    .chip{ padding:.35rem .6rem; background: var(--surface); border:1px solid var(--line); border-radius: 999px; font-size:.85rem; color:#555; }
-
-    /* Footer */
-    footer{ border-top: 1px solid var(--line); }
-    .footnote{ color:#777; font-size:.9rem; }
-
-    /* Animations (reduced-motion aware) */
-    .reveal{ opacity: 0; transform: translateY(12px); }
-    .reveal.is-visible{ opacity: 1; transform: translateY(0); transition: opacity .7s ease, transform .7s ease; }
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior: auto; }
-      .reveal, .reveal.is-visible{ opacity:1; transform:none; transition:none; }
-      .btn{ transition: none; }
-    }
-
-    /* Utilities */
-    .split{ display:grid; grid-template-columns: 1.25fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items:center; }
-    @media (max-width: 900px){ .split{ grid-template-columns: 1fr; } }
-    .muted{ color: var(--muted); }
-    .divider{ height:1px; background: var(--line); margin: 1.25rem 0; }
-    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-    .skip-link{ position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
-    .skip-link:focus{ position: static; width: auto; height: auto; padding:.5rem .75rem; background:#000; color:#fff; border-radius:999px; }
+    /* ... (keep the rest of your style section unchanged) ... */
   </style>
-
-  <!-- Structured Data: Person -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ayan Patel",
-    "url": "https://example.com/",
-    "jobTitle": "Product-Focused Engineer",
-    "sameAs": [
-      "https://github.com/your-handle",
-      "https://www.linkedin.com/in/your-handle"
-    ]
-  }
-  </script>
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="header" role="banner">
@@ -161,8 +95,8 @@
       <div class="container hero reveal">
         <div>
           <span class="eyebrow">Available for select collaborations</span>
-          <h1>Building thoughtful digital products with ruthless simplicity.</h1>
-          <p class="tagline">I’m Ayan, a product‑minded engineer focused on clean experiences, performance, and details that feel inevitable — inspired by Apple‑grade craft.</p>
+          <h1>Driving business growth through data, strategy, and structured problem-solving.</h1>
+          <p class="tagline">I’m Ayan, a Business Analyst passionate about transforming research and data into actionable product strategies that drive measurable business growth.</p>
           <div class="cta">
             <a class="btn" href="#projects">See work</a>
             <a class="btn ghost" href="#contact">Get in touch</a>
@@ -176,18 +110,22 @@
       <div class="container split reveal">
         <div>
           <h2 id="about-title">About</h2>
-          <p>Over the past <strong>4+ years</strong>, I’ve shipped web and product experiences used by thousands. I value <em>clarity</em> over complexity, and I obsess over performance, accessibility, and typography. My approach is to remove everything that isn’t essential — then refine what remains.</p>
+          <p>I’m a <strong>Business Analyst</strong> passionate about bridging the gap between data, users, and business strategy. 
+My approach is rooted in structured problem-solving — understanding needs, analyzing insights, and designing 
+actionable product solutions that create measurable impact.</p>
           <div class="chips" aria-label="Focus areas">
-            <span class="chip">Design Systems</span>
-            <span class="chip">Frontend Architecture</span>
-            <span class="chip">Performance</span>
-            <span class="chip">A11y</span>
+            <span class="chip">Business Analysis</span>
+            <span class="chip">Frontend Product strategy</span>
+            <span class="chip">Data Visualization</span>
+            <span class="chip">User Research</span>
+            <span class="chip">Stakeholder Management</span>
           </div>
         </div>
         <div>
           <div class="card" role="img" aria-label="Abstract placeholder image representing minimal design">
             <div class="thumb">
-                <img src="asstes\images\DSC08297.JPG" alt="Ayan Patel" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                <img src="assets/images/DSC08297.JPG" alt="Ayan Patel" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+
             </div>
             <div class="meta"><span>Based in India</span><span class="muted">UTC+5:30</span></div>
           </div>
@@ -221,45 +159,7 @@
             </div>
           </article>
 
-          <!-- Project 3 -->
-          <article class="card" role="listitem">
-            <div class="thumb" aria-hidden="true"></div>
-            <h3>Analytics Dashboard</h3>
-            <p>Zero‑noise, high‑signal metrics view with real‑time updates. <strong>+2x</strong> daily active use.</p>
-            <div class="chips">
-              <span class="chip">WebSockets</span><span class="chip">Svelte/React</span><span class="chip">Perf</span>
-            </div>
-          </article>
-
-          <!-- Project 4 -->
-          <article class="card" role="listitem">
-            <div class="thumb" aria-hidden="true"></div>
-            <h3>Marketing Site Refresh</h3>
-            <p>Apple‑inspired typographic redesign. Faster by <strong>35%</strong>, lighthouse 98/100.</p>
-            <div class="chips">
-              <span class="chip">Next.js</span><span class="chip">Image&nbsp;Optimization</span><span class="chip">SEO</span>
-            </div>
-          </article>
-
-          <!-- Project 5 -->
-          <article class="card" role="listitem">
-            <div class="thumb" aria-hidden="true"></div>
-            <h3>Docs Platform</h3>
-            <p>Built a docs experience with progressive disclosure and searchable snippets. Support tickets down <strong>22%</strong>.</p>
-            <div class="chips">
-              <span class="chip">MDX</span><span class="chip">Algolia</span><span class="chip">DX</span>
-            </div>
-          </article>
-
-          <!-- Project 6 -->
-          <article class="card" role="listitem">
-            <div class="thumb" aria-hidden="true"></div>
-            <h3>Mobile Web App</h3>
-            <p>Gesture‑first PWA with offline mode and instant launch. User CSAT up <strong>18%</strong>.</p>
-            <div class="chips">
-              <span class="chip">PWA</span><span class="chip">IndexedDB</span><span class="chip">Motion</span>
-            </div>
-          </article>
+          
         </div>
       </div>
     </section>
@@ -270,20 +170,33 @@
         <h2 id="skills-title">Skills & Services</h2>
         <div class="grid cols-3" style="margin-top: 1rem;">
           <div class="card">
-            <h3>Product Engineering</h3>
-            <p>From concept to ship. I translate goals into clean interfaces that move metrics without bloat.</p>
-            <div class="chips"><span class="chip">React / TS</span><span class="chip">Node</span><span class="chip">API</span></div>
-          </div>
-          <div class="card">
-            <h3>Design Systems</h3>
-            <p>Token‑driven systems with strict typography, spacing, and motion. Consistency at speed.</p>
-            <div class="chips"><span class="chip">Figma</span><span class="chip">Tokens</span><span class="chip">A11y</span></div>
-          </div>
-          <div class="card">
-            <h3>Performance & SEO</h3>
-            <p>Ship fast by default: Core Web Vitals, SSR/ISR, clean semantics, and metadata that ranks.</p>
-            <div class="chips"><span class="chip">Lighthouse</span><span class="chip">CWV</span><span class="chip">Schema</span></div>
-          </div>
+  <h3>Business & Strategy</h3>
+  <p>I translate business problems into structured strategies, combining market insights and analytical thinking to drive growth and efficiency.</p>
+  <div class="chips">
+    <span class="chip">Market Research</span>
+    <span class="chip">Requirement Analysis</span>
+    <span class="chip">Product Strategy</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Data & Analytics</h3>
+  <p>I analyze user data, build dashboards, and convert insights into actionable recommendations that inform product and business decisions.</p>
+  <div class="chips">
+    <span class="chip">Power BI</span>
+    <span class="chip">MS Excel</span>
+    <span class="chip">SQL (Basic)</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Communication & Product Documentation</h3>
+  <p>I create clear PRDs, reports, and visual deliverables that align stakeholders and streamline execution across product and tech teams.</p>
+  <div class="chips">
+    <span class="chip">PRD Writing</span>
+    <span class="chip">Notion</span>
+    <span class="chip">Canva</span>
+  </div>
         </div>
       </div>
     </section>
