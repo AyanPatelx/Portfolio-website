@@ -190,3 +190,38 @@ color: #666;
     text-align: center;
   }
 }
+/* ------------------
+   MOBILE SPACING FIX
+------------------ */
+
+@media (max-width: 768px) {
+  /* Reduce gaps between header, hero, and sections */
+  header.header {
+    margin-bottom: 0.5rem;
+  }
+
+  .hero {
+    padding-top: 2rem !important;
+    padding-bottom: 2.5rem !important;
+    min-height: auto !important;
+  }
+
+  .section {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  /* Fix double spacing below hero */
+  #home.section + #about.section {
+    margin-top: -1rem !important;
+  }
+
+  /* Tighten vertical rhythm inside hero and about */
+  .hero h1 {
+    margin-bottom: 0.75rem;
+  }
+  .tagline {
+    margin-bottom: 1rem;
+  }
+}
+
